@@ -47,6 +47,7 @@ You need `mysql.connector` in order to use this api
 
         api.get_json_all("DATABASE_NAME")
         ```
+
     2. **get_json(database, \*tables)** :- Convert only specified tables present in the specified database into JSON file with same name as the table name.
     The converted JSON file is saved in the current working directory.
         ```python
@@ -55,8 +56,26 @@ You need `mysql.connector` in order to use this api
 
         api.get_json("DATABASE_NAME", "TABLE_1", "TABLE_2",...,"TABLE_N")
         ```
-    
-    3. **get_data_dict(database, table)** :- Return the table specified in a Dictionary format. Database needs to be specified.
+
+    3. **get_csv_all(database)** :- Convert all tables present in the specified database into CSV file with same name as the table name.
+    The converted CSV file is saved in the current working directory.
+        ```python
+        from sql_api import sql_api
+        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+
+        api.get_csv_all("DATABASE_NAME")
+        ```
+
+    4. **get_csv(database, \*tables)** :- Convert only specified tables present in the specified database into CSV file with same name as the table name.
+    The converted CSV file is saved in the current working directory.
+        ```python
+        from sql_api import sql_api
+        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+
+        api.get_csv_all("DATABASE_NAME", "TABLE_1", "TABLE_2",...,"TABLE_N")
+        ```
+
+    5. **read_data(database, table)** :- Return the table specified in a Dictionary format to be read into pandas DataFrame. Database needs to be specified.
         ```python
         from sql_api import sql_api
         api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
