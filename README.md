@@ -1,20 +1,16 @@
 # SQL API
-This **API** lets you extract table data from **SQL databse** into **json/csv** files to be used as DataFrame with **pandas** for **Data Analysis**.
-
-This **API** also lets you lets you Extract the Table data to be directly used up in into you code that is no external files. 
-
-You need `mysql.connector` in order to use this api
+This **API** lets you get get the data from your local MySQL database in the form of either **CSV** or **JSON** or a **Python Dictionary**.
 
 ---
 
 ### Installation of for SQL API
-* you need to install Python/MySql connector in you mysql database.
+* You need to install Python/MySql connector in you mysql database.
 
-* once that is done, run this command in your terminal.
+* Once that is done, run this command in your terminal.
     ```zsh
     pip install mysql.connector
     ```
-* now download this api by cloning this repository to your local machine by typing the following command in you terminal
+* Now download this api by cloning this repository to your local machine by typing the following command in you terminal
     ```zsh
     git clone https://github.com/himank670429/sql-api.git
     ```
@@ -23,27 +19,21 @@ You need `mysql.connector` in order to use this api
 ---
 
 ### How To use
-* importing the API
+* Importing the API
     ```python 
     from sql_api import sql_api
     ```
 * Initiallize the class object
     ```python
-    from sql_api import sql_api
-    api = sql_api(password = "YOUR MYSQL PASSWORD")
-    ```
-    here `host` and `user` have default value of `localhost` and `root` respectively. but you can specify them as keyword argument as follows
-
-    ```python 
-    api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
-
+    from sql_api import sql_api 
+    api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
     ```
 * Methods
     1. **get_json_all(database)** :- Convert all tables present in the specified database into JSON file with same name as the table name.
     The converted JSON file is saved in the current working directory.
         ```python
         from sql_api import sql_api
-        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+        api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
 
         api.get_json_all("DATABASE_NAME")
         ```
@@ -52,7 +42,7 @@ You need `mysql.connector` in order to use this api
     The converted JSON file is saved in the current working directory.
         ```python
         from sql_api import sql_api
-        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+        api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
 
         api.get_json("DATABASE_NAME", "TABLE_1", "TABLE_2",...,"TABLE_N")
         ```
@@ -61,7 +51,7 @@ You need `mysql.connector` in order to use this api
     The converted CSV file is saved in the current working directory.
         ```python
         from sql_api import sql_api
-        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+        api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
 
         api.get_csv_all("DATABASE_NAME")
         ```
@@ -70,15 +60,15 @@ You need `mysql.connector` in order to use this api
     The converted CSV file is saved in the current working directory.
         ```python
         from sql_api import sql_api
-        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+        api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
 
-        api.get_csv_all("DATABASE_NAME", "TABLE_1", "TABLE_2",...,"TABLE_N")
+        api.get_csv("DATABASE_NAME", "TABLE_1", "TABLE_2",...,"TABLE_N")
         ```
 
     5. **read_data(database, table)** :- Return the table specified in a Dictionary format to be read into pandas DataFrame. Database needs to be specified.
         ```python
         from sql_api import sql_api
-        api = sql_api(host = "YOUR HOST", user = "YOU USER", password = "YOUR MYSQL PASSOWRD")
+        api = sql_api(host = "{YOUR_HOST}", user = "{YOUR_USER}", password = "{YOUR_MYSQL_PASSOWRD}")
 
         data = api.get_data_dict("DATABASE_NAME", "TABLE_NAME")
         print(data) 
